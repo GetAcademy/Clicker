@@ -1,32 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Clicker
+﻿namespace Clickerprogram
 {
-    class ClickerGame
+    internal class ClickerGame
     {
-        public int Points { get; private set; } = 0;
-        int _pointsPerClick = 1;
-        int _pointsPerClickIncrease = 1;
+        public int points = 0;
+        public int pointsPerClick = 1;
+        public int pointsPerClickIncrease = 1;
 
-        public void Click()
+        public void Game()
         {
-            Points += _pointsPerClick;
+
+            while (true)
+            {
+
+                Console.WriteLine($"Du har {points} poeng.");
+                Console.WriteLine("Trykk tast for ønsket kommando.");
+                char command = Console.ReadKey().KeyChar;
+                if (command == 'x') Environment.Exit(0);
+                else if (command == ' ') points += pointsPerClick;
+                else if (command == 'k' && points >= 10)
+                {
+                    points -= 10;
+                    pointsPerClick += pointsPerClickIncrease;
+                }
+                else if (command == 's' && points >= 100)
+                {
+                    points -= 100;
+                    pointsPerClickIncrease++;
+                }
+            }
         }
 
-        public void Upgrade()
-        {
-            if (Points < 10) return;
-            Points -= 10;
-            _pointsPerClick += _pointsPerClickIncrease;
-        }
-
-        public void SuperUpgrade()
-        {
-            if (Points < 100) return;
-            Points -= 100;
-            _pointsPerClickIncrease++;
-        }
     }
 }
