@@ -9,6 +9,6 @@ namespace Clickerprogram
     internal interface ICommando
     {
         void Run();
-        public string Command { get; }
+        public char Command { get; }
     }
 }

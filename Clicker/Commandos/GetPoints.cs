@@ -10,15 +10,15 @@ namespace Clickerprogram
     {
         public GetPoints(ClickerGame game)
         {
-            Command = " ";
+            Command = ' ';
             _Game = game;
         }
         public void Run()
         {
-            
+            _Game.points += _Game.pointsPerClick;
         }
         
         private ClickerGame _Game;
-        public string Command { get; private set; }
+        public char Command { get; private set; }
     }
 }

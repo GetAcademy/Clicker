@@ -4,7 +4,7 @@ namespace Clickerprogram;
 
 internal class CommandSet
 {
-    private ICommando[] _Array;
+    private readonly ICommando[] _Array;
 
     public CommandSet(ClickerGame game)
     {
@@ -16,9 +16,10 @@ internal class CommandSet
             new GetPoints(game),                
         };                                  
     }
-    public int RunCommand(string command)
+    public int RunCommand(char command)
     {
-        ICommando? ret_value = findobj(command);
+        Console.WriteLine(command);
+        ICommando? ret_value = Find_object(command);
         if (ret_value != null)
         {
             ret_value.Run();
@@ -28,12 +29,11 @@ internal class CommandSet
         return 1;
     }
 
-    private ICommando? findobj(string command)
+    private ICommando? Find_object(char command)
     {
         foreach (ICommando arr in _Array)
         {
-            if(arr.Command != command) continue;
-            return arr;
+            if (arr.Command == command) return arr;
         }
 
         return null;

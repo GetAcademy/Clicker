@@ -19,16 +19,23 @@ namespace Clickerprogram
     internal class Program
     {
         private static ClickerGame _Clicker = new ClickerGame();
-        private static CommandSet _commandSet = new CommandSet(_Clicker);
+        private static CommandSet _CommandSet = new CommandSet(_Clicker);
+        private static char _Command = 'x';
         private static void Main()
         {
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine($"Score: {_Clicker.points}");
                 Console.WriteLine($"-SPACE = klikk(og få poeng)\r\n");
                 Console.WriteLine($"- K = kjøp oppgradering \r\nøker poeng per klikk koster 10 poeng\r\n");
                 Console.WriteLine($"- S = kjøp superoppgradering øker \"poeng per klikk\" for den vanlige oppgraderingen. koster 100 poeng\r\n ");
                 Console.WriteLine($"- X = avslutt applikasjonen");
+                _Command = Console.ReadKey().KeyChar;
+                
+                _CommandSet.RunCommand(_Command);
+
+                
             }
         }
     }

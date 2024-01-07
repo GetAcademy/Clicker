@@ -11,15 +11,15 @@ namespace Clickerprogram
     {
         public Disrupt()
         {
-            Command = "x";
+            Command = 'x';
             
         }
         public void Run()
         {
-            
+            Environment.Exit(0);
         }
 
 
-        public string Command { get; }
+        public char Command { get; }
     }
 }

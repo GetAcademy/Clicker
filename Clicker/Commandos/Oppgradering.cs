@@ -5,15 +5,19 @@ namespace Clickerprogram
     {
         public Oppgradering(ClickerGame game)
         {
-            Command = "k";
+            Command = 'k';
             _Game = game;
         }
         public void Run()
         {
-            
+            if (_Game.points >= 10)
+            {
+                _Game.points -= 10;
+                _Game.pointsPerClick++;
+            }
         }
 
         private ClickerGame _Game;
-        public string Command { get; }
+        public char Command { get; }
     }
 }
